@@ -14,7 +14,7 @@ const createUer = async (req: Request, res: Response, next: NextFunction) => {
         })
 
     } catch (err: any) {
-        // console.log(error);
+        console.log(err);
         next(err)
     }
 }
