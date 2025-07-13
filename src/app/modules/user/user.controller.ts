@@ -13,9 +13,9 @@ const createUer = async (req: Request, res: Response, next: NextFunction) => {
             user
         })
 
-    } catch (error: any) {
-        console.log(error);
-        next(error)
+    } catch (err: any) {
+        // console.log(error);
+        next(err)
     }
 }
 
