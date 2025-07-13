@@ -62,7 +62,7 @@ process.on("SIGTERM", (err) => {
 
 // 4 (SIGIN)
 process.on("SIGINT", () => {
-    console.log("SIGIN detected....server shutting down");
+    console.log("SIGINT detected....server shutting down");
     if (server) {
         server.close(() => {
             process.exit(1)
