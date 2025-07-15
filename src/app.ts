@@ -1,10 +1,12 @@
+import cookieParser from 'cookie-parser'
 import express, { Request, Response } from 'express'
 import cors from 'cors'
 import { router } from './app/Routes'
 import { globalErrorHandler } from './app/middlewares/globalErrorHandler'
 import notFound from './app/middlewares/notFound'
-
 const app = express()
+
+app.use(cookieParser())
 app.use(express.json())
 app.use(cors())
 
