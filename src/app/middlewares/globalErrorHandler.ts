@@ -3,6 +3,7 @@
 import { NextFunction, Request, Response } from "express"
 import { envVars } from "../config/env"
 import AppError from "../errorHelpers/AppError"
+import { issue } from "zod/v4/core/util.cjs"
 
 export const globalErrorHandler = (err: any, req: Request, res: Response, next: NextFunction) => {
 
@@ -15,6 +16,18 @@ export const globalErrorHandler = (err: any, req: Request, res: Response, next: 
         const matchedArray = err.message.match(/"([^"]*)"/)
         statusCode = 400
         message = `${matchedArray[1]} already exist`
+    }
+
+    else if (err.name === 'ZodError') {
+        statusCode = 400
+        message = 'Zod Error'
+
+        err.issues.forEach((issue: any) => {
+            errorSources.push({
+                path: issue.path[0],
+                message: issue.message
+            })
+        })
     }
 
     else if (err.name === 'CastError') {
