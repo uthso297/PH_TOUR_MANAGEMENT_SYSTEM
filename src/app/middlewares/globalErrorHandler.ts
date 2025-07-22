@@ -3,9 +3,14 @@
 import { NextFunction, Request, Response } from "express"
 import { envVars } from "../config/env"
 import AppError from "../errorHelpers/AppError"
-import { issue } from "zod/v4/core/util.cjs"
 
 export const globalErrorHandler = (err: any, req: Request, res: Response, next: NextFunction) => {
+
+    if (envVars.NODE_ENV === "development") {
+        // eslint-disable-next-line no-console
+        console.log(err);
+    }
+
 
     let statusCode = 500
     let message = `Something went wrong!! ${err.message}`
@@ -61,7 +66,7 @@ export const globalErrorHandler = (err: any, req: Request, res: Response, next: 
         success: false,
         message,
         errorSources,
-        err,
+        err: envVars.NODE_ENV === "development" ? err : null,
         stack: envVars.NODE_ENV === 'development' ? err.stack : null
     })
 }
