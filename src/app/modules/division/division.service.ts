@@ -9,15 +9,15 @@ const createDivision = async (payload: IDivision) => {
     }
 
 
-    const baseSlug = payload.name.toLowerCase().split(" ").join("-")
-    let slug = `${baseSlug}-division`
+    // const baseSlug = payload.name.toLowerCase().split(" ").join("-")
+    // let slug = `${baseSlug}-division`
 
-    let counter = 0;
-    while (await Division.exists({ slug })) {
-        slug = `${slug}-${counter++}` // dhaka-division-2
-    }
+    // let counter = 0;
+    // while (await Division.exists({ slug })) {
+    //     slug = `${slug}-${counter++}` // dhaka-division-2
+    // }
 
-    payload.slug = slug;
+    // payload.slug = slug;
 
     const division = await Division.create(payload);
 
