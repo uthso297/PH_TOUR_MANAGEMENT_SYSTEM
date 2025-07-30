@@ -17,15 +17,13 @@ export const deleteImageFromCLoudinary = async (url: string) => {
 
         const match = url.match(regex);
 
-        console.log({ match });
 
         if (match && match[1]) {
             const public_id = match[1];
             await cloudinary.uploader.destroy(public_id)
-            console.log(`File ${public_id} is deleted from cloudinary`);
 
         }
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
         throw new Apperror(401, "Cloudinary image deletion failed", error.message)
     }
