@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // /* eslint-disable no-console */
 // /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextFunction, Request, Response } from "express";
@@ -87,8 +88,33 @@ const getAllUsers = catchAsync(async (req: Request, res: Response, next: NextFun
     })
 })
 
+const getSingleUser = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+    const id = req.params.id;
+    const result = await UserServices.getSingleUser(id);
+    sendResponse(res, {
+        success: true,
+        statusCode: httpStatus.CREATED,
+        message: "User Retrieved Successfully",
+        data: result.data
+    })
+})
+
+const getMe = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+    
+    const decodedToken = req.user as JwtPayload
+    const result = await UserServices.getMe(decodedToken.userId);
+    sendResponse(res, {
+        success: true,
+        statusCode: httpStatus.CREATED,
+        message: "Your profile Retrieved Successfully",
+        data: result.data
+    })
+})
+
 export const UserController = {
     createUser,
     getAllUsers,
-    updateUser
+    updateUser,
+    getMe,
+    getSingleUser
 }
