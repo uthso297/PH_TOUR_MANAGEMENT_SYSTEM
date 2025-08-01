@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice - <%= tourTitle %></title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            padding: 40px;
+        }
+        .header {
+            border-bottom: 2px solid #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+        }
+        .header h1 {
+            margin: 0;
+        }
+        .section {
+            margin-bottom: 25px;
+        }
+        .label {
+            font-weight: bold;
+        }
+        .footer {
+            border-top: 1px solid #aaa;
+            margin-top: 40px;
+            padding-top: 10px;
+            font-size: 0.9em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Booking Invoice</h1>
+        <p>Date: <%= new Date(bookingDate).toLocaleDateString() %></p>
+    </div>
+
+    <div class="section">
+        <p><span class="label">Name:</span> <%= userName %></p>
+        <p><span class="label">Tour:</span> <%= tourTitle %></p>
+        <p><span class="label">Guests:</span> <%= guestCount %></p>
+    </div>
+
+    <div class="section">
+        <p><span class="label">Transaction ID:</span> <%= transactionId %></p>
+        <p><span class="label">Total Paid:</span> $<%= totalAmount.toFixed(2) %></p>
+    </div>
+
+    <div class="footer">
+        <p>Thank you for your booking! We hope you enjoy your experience.</p>
+    </div>
+</body>
+</html>

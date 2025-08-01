@@ -8,10 +8,10 @@ const seedSuperAdmin = async () => {
     try {
         const isSuperAdminExist = await User.findOne({ email: envVars.SUPER_ADMIN_EMAIL })
         if (isSuperAdminExist) {
-            console.log('Super Admin Already Exist');
+            console.log('Super Admin Already Exist 👲');
             return
         }
-        console.log('trying to create super admin');
+        console.log('trying to create super admin🥳');
         const hashedPassword = await bcryptjs.hash(envVars.SUPER_ADMIN_PASSWORD, Number(envVars.BCRYPT_SALT_ROUND))
 
         const authProvider: IAuthProvider = {
