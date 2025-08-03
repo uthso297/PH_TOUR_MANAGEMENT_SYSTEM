@@ -33,12 +33,13 @@ const createUser = catchAsync(async (req: Request, res: Response, next: NextFunc
     //     message: "User Created Successfully",
     //     user
     // })
-
+    const userObj = user.toObject()
+    const { password, ...rest } = userObj
     sendResponse(res, {
         success: true,
         statusCode: httpStatus.CREATED,
         message: "User Created Successfully",
-        data: user,
+        data: rest
     })
 })
 
@@ -97,7 +98,7 @@ const getSingleUser = catchAsync(async (req: Request, res: Response, next: NextF
 })
 
 const getMe = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-    
+
     const decodedToken = req.user as JwtPayload
     const result = await UserServices.getMe(decodedToken.userId);
     sendResponse(res, {
