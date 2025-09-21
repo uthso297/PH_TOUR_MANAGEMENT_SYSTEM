@@ -1,4 +1,6 @@
-# 🏝️ PH Tour Management System – Backend
+# 🏝️ PH Tour Management System – Backend  
+
+🔗 **Live API Base URL:** [https://backend-ph-tour-management-system-eight.vercel.app/](https://backend-ph-tour-management-system-eight.vercel.app/)  
 
 ## 🚀 Project Overview
 The **PH Tour Management System** is a comprehensive backend service that powers a tour booking platform for Bangladesh. It supports **user authentication**, **tour listings**, **bookings**, **payments**, and **admin management** with role-based access control.  
